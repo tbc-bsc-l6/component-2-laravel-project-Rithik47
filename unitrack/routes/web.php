@@ -2,16 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-    
+    return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,8 +30,8 @@ Route::middleware('auth')->group(function () {
         Route::get('dashboard', [App\Http\Controllers\Student\DashboardController::class, 'index'])->name('dashboard');
     });
 
-        // Student enrolments
-        Route::post('modules/{module}/enrol', [App\Http\Controllers\EnrolmentController::class, 'store'])->name('modules.enrol');
+    // Student enrolments
+    Route::post('modules/{module}/enrol', [App\Http\Controllers\EnrolmentController::class, 'store'])->name('modules.enrol');
     // Admin users management
     Route::get('admin/users', [App\Http\Controllers\Admin\UserRoleController::class, 'index'])->name('admin.users.index');
     Route::patch('admin/users/{user}', [App\Http\Controllers\Admin\UserRoleController::class, 'update'])->name('admin.users.update');
@@ -52,4 +50,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('admin/modules/{module}/students/{enrolment}', [App\Http\Controllers\Admin\ModuleAdminController::class, 'removeStudent'])->name('admin.modules.students.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

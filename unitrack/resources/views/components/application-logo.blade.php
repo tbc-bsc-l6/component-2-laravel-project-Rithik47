@@ -1,0 +1,1 @@
+<img src="{{ asset('images/logo.png') }}" alt="Unitrack Logo" {{ $attributes->merge(['class' => 'h-9 w-auto transition-all duration-300 dark:invert-0 invert']) }}>

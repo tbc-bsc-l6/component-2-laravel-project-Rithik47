@@ -34,10 +34,8 @@
                     <!-- Logo & Desktop Nav -->
                     <div class="flex items-center gap-8">
                         <a href="{{ route('dashboard') }}" class="flex items-center gap-2 group">
-                            <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                </svg>
+                            <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/20 shadow-lg group-hover:scale-105 transition-transform duration-200 overflow-hidden">
+                                <x-application-logo class="w-7 h-7 object-contain" />
                             </div>
                             <span class="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">UniTrack</span>
                         </a>
@@ -189,10 +187,8 @@
                     <!-- Brand Section -->
                     <div class="col-span-1 md:col-span-1">
                         <a href="{{ route('dashboard') }}" class="flex items-center gap-2 group mb-4">
-                            <div class="relative flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
-                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                </svg>
+                            <div class="relative flex items-center justify-center w-8 h-8 rounded-lg bg-white/10 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/20 shadow-lg group-hover:scale-105 transition-transform duration-200 overflow-hidden">
+                                <x-application-logo class="w-5 h-5 object-contain" />
                             </div>
                             <span class="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">UniTrack</span>
                         </a>

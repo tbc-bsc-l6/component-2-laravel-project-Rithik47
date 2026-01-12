@@ -80,11 +80,11 @@ class StudentDashboardTest extends TestCase
 
         $this->actingAs($student)
             ->get(route('modules.index'))
-            ->assertSee('Student Dashboard');
+            ->assertSee('My Dashboard');
 
         $teacher = User::factory()->create(['role' => 'teacher']);
         $this->actingAs($teacher)
             ->get(route('modules.index'))
-            ->assertDontSee('Student Dashboard');
+            ->assertDontSee('My Dashboard');
     }
 }

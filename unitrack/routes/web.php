@@ -50,4 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('admin/modules/{module}/students/{enrolment}', [App\Http\Controllers\Admin\ModuleAdminController::class, 'removeStudent'])->name('admin.modules.students.destroy');
 });
 
+Route::get('auth/google', [App\Http\Controllers\Auth\SocialAuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [App\Http\Controllers\Auth\SocialAuthController::class, 'handleGoogleCallback']);
+
 require __DIR__ . '/auth.php';

@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
 
     // Admin module show & student removal
     Route::get('admin/modules/{module}', [App\Http\Controllers\Admin\ModuleAdminController::class, 'show'])->name('admin.modules.show');
+    Route::post('admin/modules/{module}/students', [App\Http\Controllers\Admin\ModuleAdminController::class, 'addStudent'])->name('admin.modules.students.store');
     Route::delete('admin/modules/{module}/students/{enrolment}', [App\Http\Controllers\Admin\ModuleAdminController::class, 'removeStudent'])->name('admin.modules.students.destroy');
 });
 

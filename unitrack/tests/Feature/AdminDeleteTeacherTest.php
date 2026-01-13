@@ -21,7 +21,7 @@ class AdminDeleteTeacherTest extends TestCase
         $this->actingAs($admin)
             ->delete(route('admin.users.destroy', $teacher))
             ->assertRedirect(route('admin.users.index'))
-            ->assertSessionHas('success', 'Teacher account deleted.');
+            ->assertSessionHas('success', 'User account deleted.');
 
         $this->assertDatabaseMissing('users', ['id' => $teacher->id]);
         $this->assertDatabaseHas('modules', ['id' => $module->id, 'teacher_id' => null]);
@@ -54,6 +54,6 @@ class AdminDeleteTeacherTest extends TestCase
         $this->actingAs($admin)
             ->deleteJson(route('admin.users.destroy', $teacher))
             ->assertOk()
-            ->assertJson(['message' => 'Teacher deleted']);
+            ->assertJson(['message' => 'User deleted']);
     }
 }

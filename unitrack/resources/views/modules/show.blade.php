@@ -28,7 +28,8 @@
                         </div>
                         <div>
                             <div class="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
-                                {{ $module->code }}</div>
+                                {{ $module->code }}
+                            </div>
                             <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">{{ $module->name }}</h2>
                         </div>
                     </div>
@@ -80,7 +81,13 @@
             <!-- Sidebar / Enrolment -->
             <div class="space-y-6">
                 <div class="bg-indigo-600 rounded-2xl p-6 text-white shadow-xl shadow-indigo-500/20">
-                    <h3 class="text-lg font-bold mb-4">Registration</h3>
+                    <h3 class="text-lg font-bold mb-2">Registration</h3>
+
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-70">Limit: 10 Students
+                            Only</span>
+                        <span class="text-xs font-bold">{{ $module->active_students_count }}/10</span>
+                    </div>
                     @auth
                         @if(auth()->user()->enrolments()->where('module_id', $module->id)->exists())
                             <div class="p-4 bg-white/10 rounded-xl border border-white/20 flex items-center gap-3">

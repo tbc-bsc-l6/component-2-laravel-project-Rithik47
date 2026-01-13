@@ -130,10 +130,10 @@
                                     </form>
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    @if($user->role === 'teacher' && $user->id !== auth()->id())
+                                    @if($user->id !== auth()->id() && $user->role !== 'admin')
                                         <form method="POST" action="{{ route('admin.users.destroy', $user) }}"
-                                            class="inline-block delete-teacher-form"
-                                            onsubmit="return confirm('Delete this teacher account? This will unassign their modules.')">
+                                            class="inline-block delete-user-form"
+                                            onsubmit="return confirm('Delete this user account? This action cannot be undone.')">
                                             @csrf
                                             @method('DELETE')
                                             <button
@@ -163,10 +163,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            document.querySelectorAll('.delete-teacher-form').forEach(form => {
+            document.querySelectorAll('.delete-user-form').forEach(form => {
                 form.addEventListener('submit', async function (e) {
                     e.preventDefault();
-                    if (!confirm('Delete this teacher account? This will unassign their modules.')) return;
+                    if (!confirm('Delete this user account? This action cannot be undone.')) return;
                     const action = this.getAttribute('action');
                     try {
                         const res = await fetch(action, {
@@ -180,7 +180,7 @@
 
                         if (!res.ok) {
                             const err = await res.json().catch(() => null);
-                            alert(err?.message || 'Failed to delete teacher');
+                            alert(err?.message || 'Failed to delete user');
                             return;
                         }
 

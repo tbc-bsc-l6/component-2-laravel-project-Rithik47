@@ -15,9 +15,12 @@
 
                 <div>
                     <div class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
-                        {{ $module->code }}</div>
+                        {{ $module->code }}
+                    </div>
+
                     <div class="text-lg font-bold text-gray-900 dark:text-white leading-tight mt-0.5">
-                        {{ $module->name }}</div>
+                        {{ $module->name }}
+                    </div>
                 </div>
             </div>
 
@@ -27,12 +30,30 @@
             </div>
         </div>
 
-        <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5 mt-2">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            Created {{ $module->created_at?->diffForHumans() }}
+        <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-between mt-4">
+            <div class="flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Created {{ $module->created_at?->diffForHumans() }}</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 {{ $module->active_students_count >= 10 ? 'text-amber-500' : 'text-gray-400' }}"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                    </path>
+                </svg>
+                <span
+                    class="font-bold {{ $module->active_students_count >= 10 ? 'text-amber-600 dark:text-amber-400' : '' }}">{{ $module->active_students_count }}/10</span>
+            </div>
+        </div>
+
+        <!-- Capacity Bar -->
+        <div class="w-full bg-gray-100 dark:bg-gray-700 h-1 rounded-full mt-2 overflow-hidden">
+            <div class="h-full {{ $module->active_students_count >= 10 ? 'bg-amber-500' : 'bg-indigo-500' }}"
+                style="width: {{ min(($module->active_students_count / 10) * 100, 100) }}%"></div>
         </div>
     </div>
 

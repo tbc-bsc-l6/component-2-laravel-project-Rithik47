@@ -7,7 +7,7 @@
             <p class="text-sm text-gray-500 dark:text-gray-400">Track your learning progress and discover new modules</p>
         </div>
 
-        <!-- Current Enrolments -->
+        {{-- Current Enrolments --}}
         @if(isset($current))
             <div
                 class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-white/20 dark:border-gray-700/50">
@@ -59,7 +59,7 @@
             </div>
         @endif
 
-        <!-- Available Modules -->
+        {{-- Available Modules --}}
         @if(isset($available))
             <div
                 class="bg-indigo-600/5 dark:bg-indigo-900/5 backdrop-blur-md rounded-2xl p-6 border border-indigo-100 dark:border-indigo-900/30">
@@ -100,7 +100,7 @@
             </div>
         @endif
 
-        <!-- History -->
+        {{-- History --}}
         @if(isset($history))
             <div class="bg-gray-50/50 dark:bg-gray-900/50 rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
                 <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">

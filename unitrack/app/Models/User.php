@@ -26,6 +26,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'google_id',
+        'google_token',
     ];
 
     /**
@@ -73,8 +75,8 @@ class User extends Authenticatable
     public function modules(): BelongsToMany
     {
         return $this->belongsToMany(Module::class, 'enrolments')
-                    ->withPivot(['started_at', 'status', 'completed_at'])
-                    ->withTimestamps();
+            ->withPivot(['started_at', 'status', 'completed_at'])
+            ->withTimestamps();
     }
 
     /**

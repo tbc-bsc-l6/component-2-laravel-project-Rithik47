@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Usage Summary and Reflection</title>
+    <style>
+        :root {
+            --bg-body: #f5f5f5;
+            --bg-card-header: #5d5651;
+            --bg-card-content: #ebebeb;
+            --bg-intro: #f2f2f2;
+            --text-main: #333;
+            --text-light: #fff;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .title-underline {
+            height: 3px;
+            background-color: #999;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .intro-box {
+            background-color: var(--bg-intro);
+            padding: 25px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            font-size: 14px;
+            font-style: italic;
+            color: #666;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-box p {
+            margin: 0 0 10px 0;
+        }
+
+        .intro-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .prompt-card {
+            margin-bottom: 25px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            background-color: var(--bg-card-header);
+            color: var(--text-light);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .card-content {
+            background-color: var(--bg-card-content);
+            padding: 15px 20px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .date-label {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .date-label {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Summary and Reflection on Artificial Intelligence (AI) Usage</h1>
+        <div class="title-underline"></div>
+
+        <div class="intro-box">
+            <p>Please provide a list of the AI prompts used to assist in the creation of your assignment, along with a
+                brief reflection on how the AI response helped (or not) your understanding. If you did not use AI,
+                please state "No AI used".</p>
+            <p>Please note that the list does not need to include every minor prompt, but should cover the main prompts
+                that significantly influenced and assisted you in your assignment.</p>
+            <p>Please create a new card for each prompt used, detailing the prompt, a summary of the AI's response, and
+                your reflection on its usefulness. Please also include the date when the prompt was made.</p>
+            <p>Please commit regularly to GIT - so that the date can be verified. While the exact date of the commit may
+                not match the date of the prompt, it should be close enough to provide a reasonable estimate of when the
+                prompt was made.</p>
+
+        </div>
+
+        <!-- Prompt 1 -->
+        <div class="prompt-card">
+            <div class="card-header">
+                <span>Prompt: Help me in the implementation of Module Enrollment Error - View, Add, and Remove Students
+                    from Modules is getting error</span>
+                <span class="date-label">Date: 13-01-2026</span>
+            </div>
+            <div class="card-content">
+                The AI helped implement the backend controllers and routes for managing student enrollment. It also
+                Helped me to debug the error.
+            </div>
+        </div>
+
+        <!-- Prompt 2 -->
+        <div class="prompt-card">
+            <div class="card-header">
+                <span>Prompt: Create a script and instructions for a Website Demo Video</span>
+                <span class="date-label">Date: 12-01-2026</span>
+            </div>
+            <div class="card-content">
+                The AI provided a structured script and technical guidance for recording a high-quality demo video of
+                the UniTrack application, highlighting key features like module enrollment and user management.
+            </div>
+        </div>
+
+        <!-- Prompt 3 -->
+        <div class="prompt-card">
+            <div class="card-header">
+                <span>Prompt: Debug Google Social Login Failure (register works, login fails)</span>
+                <span class="date-label">Date: 12-01-2026</span>
+            </div>
+            <div class="card-content">
+                The AI assisted in identifying issues in the Socialite authentication flow, specifically how OAuth
+                tokens and database lookups were handled, resulting in a fully working Google login.
+            </div>
+        </div>
+
+        <!-- Prompt 4 -->
+        <div class="prompt-card">
+            <div class="card-header">
+                <span>Prompt: Investigate .vs folder utility and Copilot related files</span>
+                <span class="date-label">Date: 10-01-2026</span>
+            </div>
+            <div class="card-content">
+                The AI explained the purpose of IDE-specific metadata and provided clarity on which files are safe to
+                delete or exclude from version control to maintain a clean project structure.
+            </div>
+        </div>
+
+        <!-- Prompt 5 -->
+        <div class="prompt-card">
+            <div class="card-header">
+                <span>Prompt: I got Theme-Specific Logo Error and Error in Role Selector on Login Page</span>
+                <span class="date-label">Date: 07-01-2026</span>
+            </div>
+            <div class="card-content">
+                The AI created Solved the error for logo switching based on the active theme and solved the error in a
+                role
+                selection dropdown that integrates with the backend registration and login logic was getting issue.
+            </div>
+        </div>
+
+        <!-- Prompt 6 -->
+        <div class="prompt-card">
+            <div class="card-header">
+                <span>Prompt: Ensure Dashboard Theme Consistency and Restore Footer</span>
+                <span class="date-label">Date: 06-01-2026</span>
+            </div>
+            <div class="card-content">
+                The AI refactored CSS across multiple dashboard views to ensure dark mode contrast was optimal and
+                restored a modernized footer that matches the application's overall aesthetic.
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

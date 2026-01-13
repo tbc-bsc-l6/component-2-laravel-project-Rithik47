@@ -69,21 +69,21 @@ class UserRoleController extends Controller
             abort(403);
         }
 
-        // only teachers may be deleted here
-        if ($user->role !== 'teacher') {
-            abort(400, 'Only teacher accounts may be deleted.');
-        }
+        // only teachers may be deleted here - REMOVED
+        // allow deleting any non-admin user
 
         DB::transaction(function () use ($user) {
-            // unassign modules
-            Module::where('teacher_id', $user->id)->update(['teacher_id' => null]);
+            // unassign modules if teacher
+            if ($user->role === 'teacher') {
+                Module::where('teacher_id', $user->id)->update(['teacher_id' => null]);
+            }
             $user->delete();
         });
 
         if ($request->expectsJson()) {
-            return response()->json(['message' => 'Teacher deleted']);
+            return response()->json(['message' => 'User deleted']);
         }
 
-        return redirect()->route('admin.users.index')->with('success', 'Teacher account deleted.');
+        return redirect()->route('admin.users.index')->with('success', 'User account deleted.');
     }
 }

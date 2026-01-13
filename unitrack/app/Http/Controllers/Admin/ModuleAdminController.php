@@ -16,9 +16,11 @@ class ModuleAdminController extends Controller
             abort(403);
         }
 
-        $modules = Module::with('teacher')->withCount(['enrolments as active_students_count' => function ($q) {
-            $q->whereNull('completed_at');
-        }])->paginate(15);
+        $modules = Module::with('teacher')->withCount([
+            'enrolments as active_students_count' => function ($q) {
+                $q->whereNull('completed_at');
+            }
+        ])->paginate(15);
 
         $teachers = \App\Models\User::where('role', 'teacher')->get();
 
@@ -31,11 +33,45 @@ class ModuleAdminController extends Controller
             abort(403);
         }
 
-        $module->load(['enrolments' => function ($q) {
-            $q->whereNull('completed_at')->with('user');
-        }, 'teacher']);
+        $module->load([
+            'enrolments' => function ($q) {
+                $q->whereNull('completed_at')->with('user');
+            },
+            'teacher'
+        ]);
 
-        return view('admin.modules.show', compact('module'));
+        $enrolledUserIds = $module->enrolments->pluck('user_id')->toArray();
+        $availableStudents = \App\Models\User::where('role', 'user')
+            ->whereNotIn('id', $enrolledUserIds)
+            ->orderBy('name')
+            ->get();
+
+        return view('admin.modules.show', compact('module', 'availableStudents'));
+    }
+
+    public function addStudent(Request $request, Module $module)
+    {
+        if (!auth()->user()->isAdmin()) {
+            abort(403);
+        }
+
+        $data = $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        // Check if student is already enrolled
+        if (Enrolment::where('module_id', $module->id)->where('user_id', $data['user_id'])->whereNull('completed_at')->exists()) {
+            return back()->with('error', 'Student is already enrolled in this module.');
+        }
+
+        Enrolment::create([
+            'module_id' => $module->id,
+            'user_id' => $data['user_id'],
+            'started_at' => now(),
+            'status' => Enrolment::STATUS_PENDING,
+        ]);
+
+        return redirect()->route('admin.modules.show', $module)->with('status', 'Student added to module.');
     }
 
     public function removeStudent(Request $request, Module $module, Enrolment $enrolment)
